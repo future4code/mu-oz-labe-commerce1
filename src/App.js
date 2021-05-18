@@ -44,10 +44,7 @@ export default class App extends React.Component {
       <Produtos 
         produtos={produtos}
       
-      />
-
-      
-      
+      />  
     </div>
   );
 }

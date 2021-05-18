@@ -14,8 +14,6 @@ export default class Produtos extends React.Component {
                      value= {produto.value}
                      
                      />)})}
-              
-
             </div>
         )
     }
