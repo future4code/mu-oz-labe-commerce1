@@ -7,7 +7,7 @@ export default class CardProdutos extends React.Component {
                 <img src={this.props.imageUrl}/>
                 <p>{this.props.name}</p>
                 <p>{this.props.value}</p>
-                <button onClick="">Comprar</button>
+                <button onClick={this.props.adicionarAoCarrinho}>Comprar</button>
             </div>
         )
     }

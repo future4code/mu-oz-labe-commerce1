@@ -2,6 +2,7 @@ import React from 'react';
 import CardProdutos from './CardProdutos'
 
 export default class Produtos extends React.Component {
+
     render(){
 
         return (
@@ -12,7 +13,7 @@ export default class Produtos extends React.Component {
                      imageUrl={produto.imageUrl}
                      name= {produto.name}
                      value= {produto.value}
-                     
+                     adicionarAoCarrinho= {this.props.adicionarAoCarrinho}
                      />)})}
             </div>
         )
