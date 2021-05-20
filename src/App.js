@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Filtros from './components/Filtros.js'
 import Produtos from './components/Produtos.js'
 import Carrinho from './components/Carrinho'
+import CardProdutos from './components/CardProdutos'
 
 
 export default class App extends React.Component {
@@ -30,29 +31,26 @@ export default class App extends React.Component {
       }
     ],
     lista: [
-      {
-        id: "",
-        name: "",
-        value: "",
-        imageUrl: ""
-      }
+      // {
+      //   id: "",
+      //   name: "",
+      //   value: "",
+      //   imageUrl: ""
+      // }
     ]
   }
 
   adicionarProduto = (id) => {
-    const listaCarrinho = [...this.state.produtos]
-    let novoProduto
     const novaListaCarrinho = this.state.produtos.filter((produto) => {
       if (id === produto.id) {
-        novoProduto = {
-          ...produto
-        }
-        return novoProduto
-      }
+        return true
+      } 
     })
-    listaCarrinho.push(novoProduto)
 
-      this.setState({ lista: listaCarrinho })
+    const listaCarrinho = [...this.state.lista]
+    listaCarrinho.push(...novaListaCarrinho)
+
+    this.setState({ lista: listaCarrinho })
   }
 
   render() {
@@ -61,8 +59,16 @@ export default class App extends React.Component {
         <h1>Galaxy Kids </h1>
         <Filtros />
         <Produtos
-          produtos={this.state.produtos}
-          adicionarAoCarrinho={() => this.adicionarProduto()}
+          cardProdutos={this.state.produtos.map((produto) => {
+            return (
+              <CardProdutos
+                imageUrl={produto.imageUrl}
+                name={produto.name}
+                value={produto.value}
+                adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
+              />)
+          })}
+          // adicionarAoCarrinho={() => this.adicionarProduto()}
         />
         <Carrinho
           itemCarrinho={this.state.lista}
