@@ -27,8 +27,8 @@ export default class App extends React.Component {
         value: 1000.0,
         imageUrl: "https://picsum.photos/200/200"
 
-        value: 10000.0,
-        imageUrl: "https://picsum.photos/200/200",
+        
+        
 
       },
       {
@@ -198,16 +198,7 @@ export default class App extends React.Component {
                 
               />)
           })}*/
-         
-
-          
-         
-
-                adicionarAoCarrinho={() => { this.adicionarProduto(produto.id) }}
-              />)
-          })}
-
-        />
+         />
         <Carrinho
           itemCarrinho={this.state.lista}
           listaCompras={this.state.lista.map((produto) => {
