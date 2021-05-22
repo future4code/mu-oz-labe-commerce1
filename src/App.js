@@ -10,6 +10,8 @@ import ListaCompras from './components/ListaCompras'
 
 export default class App extends React.Component {
 
+
+
   state = {
     produtos: [
       {
@@ -21,8 +23,13 @@ export default class App extends React.Component {
       {
         id: 2,
         name: "Foguete da Missão Apollo 11",
+
+        value: 1000.0,
+        imageUrl: "https://picsum.photos/200/200"
+
         value: 10000.0,
         imageUrl: "https://picsum.photos/200/200",
+
       },
       {
         id: 3,
@@ -31,7 +38,33 @@ export default class App extends React.Component {
         imageUrl: "https://picsum.photos/200/200",
       }
     ],
+
+    lista: [
+      // {
+      //   id: "",
+      //   name: "",
+      //   value: "",
+      //   imageUrl: ""
+      // }
+    ],
+    filtroMin: 0,
+    filtroMax: 2000,
+    nomeProduto: ''
+  }
+   
+  valorMin = (event) =>{
+    this.setState({filtroMin: event.target.value})
+    
+  }
+  valorMax =(event) =>{
+    this.setState({filtroMax: event.target.value})
+   
+  }
+  produtoPorNome = (event) =>{
+    this.setState({nomeProduto: event.target.value})
+
     lista: []
+
   }
 
   adicionarProduto = (id) => {
@@ -97,20 +130,83 @@ export default class App extends React.Component {
 
   render() {
 
+   
+   
+    
+    const valoresFiltrados = this.state.produtos.filter((produto)=>{
+      if(produto.value >= this.state.filtroMin){
+        return true
+      } else {
+        return false
+      }
+      
+    })
+    .filter((produto)=>{
+      if(produto.value <= this.state.filtroMax){
+        return true
+      } else{
+        return false
+      }
+    })
+    .filter((produto)=>{
+      if(
+        produto.name.toLowerCase()
+        .includes(this.state.nomeProduto.toLowerCase())){
+          return true
+        } else {
+          return false
+        }
+        
+    }
+    )
+
+
+
     return (
       <div className="App">
         <h1>Galaxy Kids </h1>
-        <Filtros />
+        <Filtros
+          valorMin={this.valorMin}
+          filtroMin={this.state.filtroMin}
+          valorMax={this.valorMax}
+          filtroMax={this.state.filtroMax}
+          produtoPorNome={this.produtoPorNome}
+          nomeProduto={this.state.nomeProduto}
+        />
+       
+        
         <Produtos
-          cardProdutos={this.state.produtos.map((produto) => {
+         cardProdutos={valoresFiltrados.map((produto)=>{
+          return(
+            <CardProdutos
+            imageUrl={produto.imageUrl}
+                name={produto.name}
+                value={produto.value}
+                adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
+            />
+          )
+        })}
+        
+         /* cardProdutos={this.state.produtos.map((produto) => {
             return (
               <CardProdutos
                 imageUrl={produto.imageUrl}
                 name={produto.name}
                 value={produto.value}
+
+                adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
+                
+              />)
+          })}*/
+         
+
+          
+         
+
                 adicionarAoCarrinho={() => { this.adicionarProduto(produto.id) }}
               />)
           })}
+
         />
         <Carrinho
           itemCarrinho={this.state.lista}
