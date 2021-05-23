@@ -18,9 +18,9 @@ export default class Filtros extends React.Component {
                 <label>Busca por nome:</label>
                 <input  type='text' value={this.props.nomeProduto} onChange={this.props.produtoPorNome} placeholder='ex.: Nave espacial'></input>
                 <label>Ordenação:</label>
-                <select>
-                    <option>Crescente</option>
-                    <option>Decrescente</option>
+                <select value={this.props.ordenacao} onChange={this.props.onChangeSelect}>
+                    <option value='crescente'>Crescente</option>
+                    <option value='decrescente'>Decrescente</option>
                 </select>
 
             </div>
