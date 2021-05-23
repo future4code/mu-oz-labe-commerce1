@@ -57,7 +57,11 @@ export default class App extends React.Component {
   produtoPorNome = (event) => {
     this.setState({ nomeProduto: event.target.value })
 
+
+  
+
   }
+
 
   ordenacaoSelect = (event) => {
     this.setState({ ordenacao: event.target.value})
@@ -199,17 +203,7 @@ export default class App extends React.Component {
           )
         })}
         
-         /* cardProdutos={this.state.produtos.map((produto) => {
-            return (
-              <CardProdutos
-                imageUrl={produto.imageUrl}
-                name={produto.name}
-                value={produto.value}
-
-                adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
-                
-              />)
-          })}*/
+        
          />
         <Carrinho
           itemCarrinho={this.state.lista}
