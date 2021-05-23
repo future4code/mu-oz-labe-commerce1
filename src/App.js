@@ -63,7 +63,7 @@ export default class App extends React.Component {
   produtoPorNome = (event) =>{
     this.setState({nomeProduto: event.target.value})
 
-    lista: []
+  
 
   }
 
