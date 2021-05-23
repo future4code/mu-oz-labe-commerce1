@@ -1,0 +1,58 @@
+body {
+  background-image: url(galaxia.jpg);
+  background-size: cover;
+}
+
+.titulo {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.inputs {
+  display: flex;
+}
+.menores {
+  width: 80px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin: 0 60px;
+}
+#diferentao {
+  width: 20%;
+}
+section {
+  background-color: rgba(248, 248, 255, 0.8);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-radius: 10px;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 100px;
+}
+img {
+  margin-top: 10px;
+  width: 200px;
+  height: 200px;
+}
+.descricao {
+  width: 300px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.card {
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 16px;
+  background-color: rgb(248, 248, 255);
+}
+.card:hover {
+  box-shadow: 5px 10px 18px gray;
+  cursor: pointer;
+}
