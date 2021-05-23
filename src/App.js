@@ -27,8 +27,8 @@ export default class App extends React.Component {
         value: 1000.0,
         imageUrl: "https://picsum.photos/200/200"
 
-        
-        
+
+
 
       },
       {
@@ -39,32 +39,32 @@ export default class App extends React.Component {
       }
     ],
 
-    lista: [
-      // {
-      //   id: "",
-      //   name: "",
-      //   value: "",
-      //   imageUrl: ""
-      // }
-    ],
+    lista: [],
     filtroMin: 0,
     filtroMax: 2000,
-    nomeProduto: ''
+    nomeProduto: '',
+    ordenacao: "decrescente"
   }
-   
-  valorMin = (event) =>{
-    this.setState({filtroMin: event.target.value})
-    
+
+  valorMin = (event) => {
+    this.setState({ filtroMin: event.target.value })
+
   }
-  valorMax =(event) =>{
-    this.setState({filtroMax: event.target.value})
-   
+  valorMax = (event) => {
+    this.setState({ filtroMax: event.target.value })
+
   }
-  produtoPorNome = (event) =>{
-    this.setState({nomeProduto: event.target.value})
+  produtoPorNome = (event) => {
+    this.setState({ nomeProduto: event.target.value })
+
 
   
 
+  }
+
+
+  ordenacaoSelect = (event) => {
+    this.setState({ ordenacao: event.target.value})
   }
 
   adicionarProduto = (id) => {
@@ -116,11 +116,11 @@ export default class App extends React.Component {
           quantidade: produto.quantidade - 1
         }
         return produtoAtt
-      } else {return produto}
+      } else { return produto }
     })
 
     const novaListaComprasAtt = novaListaCompras.filter((produto) => {
-      if (produto && produto.quantidade !== 0){
+      if (produto && produto.quantidade !== 0) {
         return true
       }
     })
@@ -129,41 +129,55 @@ export default class App extends React.Component {
   }
 
   render() {
-
-   
-   
-    
-    const valoresFiltrados = this.state.produtos.filter((produto)=>{
-      if(produto.value >= this.state.filtroMin){
+    const valoresFiltrados = this.state.produtos.filter((produto) => {
+      if (produto.value >= this.state.filtroMin) {
         return true
       } else {
         return false
       }
-      
+
     })
-    .filter((produto)=>{
-      if(produto.value <= this.state.filtroMax){
-        return true
-      } else{
-        return false
-      }
-    })
-    .filter((produto)=>{
-      if(
-        produto.name.toLowerCase()
-        .includes(this.state.nomeProduto.toLowerCase())){
+      .filter((produto) => {
+        if (produto.value <= this.state.filtroMax) {
           return true
         } else {
           return false
         }
-        
-    }
-    )
+      })
+      .filter((produto) => {
+        if (
+          produto.name.toLowerCase()
+            .includes(this.state.nomeProduto.toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
 
+      }
+      )
 
+    if (this.state.ordenacao === "crescente") {
+      valoresFiltrados.sort((produto1, produto2) => {
+        if (produto1.value > produto2.value) {
+          return 1
+        }
+        if (produto1.value < produto2.value) {
+          return -1
+        }
+        return 0
+      })} else {
+        valoresFiltrados.sort((produto1, produto2) => {
+        if (produto1.value > produto2.value) {
+          return -1
+        }
+        if (produto1.value < produto2.value) {
+          return 1
+        }
+        return 0
+      })} 
 
-    return (
-      <div className="App">
+  return(
+      <div className = "App" >
         <h1>Galaxy Kids </h1>
         <Filtros
           valorMin={this.valorMin}
@@ -172,6 +186,8 @@ export default class App extends React.Component {
           filtroMax={this.state.filtroMax}
           produtoPorNome={this.produtoPorNome}
           nomeProduto={this.state.nomeProduto}
+          ordenacao={this.state.ordenacao}
+          onChangeSelect={this.ordenacaoSelect}
         />
        
         
@@ -187,17 +203,7 @@ export default class App extends React.Component {
           )
         })}
         
-         /* cardProdutos={this.state.produtos.map((produto) => {
-            return (
-              <CardProdutos
-                imageUrl={produto.imageUrl}
-                name={produto.name}
-                value={produto.value}
-
-                adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
-                
-              />)
-          })}*/
+        
          />
         <Carrinho
           itemCarrinho={this.state.lista}
