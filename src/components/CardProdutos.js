@@ -32,14 +32,11 @@ color: white;
 const Card = styled.div`
     box-sizing: border-box;
     border-radius: 8px;
-    border: black solid 3px;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 10px 16px;
-    
     background-color: rgb(248, 248, 255);
 
     &:hover{
