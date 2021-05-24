@@ -1,42 +1,166 @@
 import React from 'react';
 import styled from 'styled-components'
 
+
 import Filtros from './components/Filtros.js'
 import Produtos from './components/Produtos.js'
 import Carrinho from './components/Carrinho'
 import CardProdutos from './components/CardProdutos'
 import ListaCompras from './components/ListaCompras'
+import astronauta from './imagens/astronauta.jpg'
+import capsula from './imagens/capsula-espacial.jpg'
+import estacao from './imagens/estacao-espacial2.jpg'
+import foguete from './imagens/foguete.jpg'
+import KitAstronautas from './imagens/kit-astronautas.png'
+import KitAstro from './imagens/kit-astronautas1.png'
+import KitEspacial from './imagens/kit-espacial2.jpg'
+import KitExploradores from './imagens/kit-exploradores.jpg'
+import OnibusEspacial from './imagens/onibus-espacial2.jpg'
+import OnibusRover from './imagens/onibus-rover.jpg'
+import PuzzleEspacial from './imagens/puzzle-espacial.jpg'
+import RoverEspacial from './imagens/rover-espacial2.jpg'
+//import SpaceDeluxe from './imagens/space-deluxe.jpg'
+import Galaxia from './imagens/galaxia.jpg'
+
+
+const Fundo = styled.body`
+  
+  width: 1425px;
+  height: 1850px; 
+  background-size: cover;
+  background-image: url(${Galaxia});
+`;
+
+const Titulo = styled.h1`
+  width: 400px;
+  padding-top:10px;
+  margin: 0 auto;
+  color: white;
+  font: bold 50px arial, sans-serif; 
+  font-weight: 50px;
+  border:black 50px;
+`;
+
+const Grid = styled.div`
+ display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: auto;
+	justify-content: stretch;
+  
+  
+  `
+
+const CarrinhoDiv = styled.div`
+background-color: rgba(248, 248, 255, 0.8);
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-columns: auto;
+align-content: start;
+border-radius: 10px;
+
+align-items: center;
+padding: 10px;
+width: 20vw;
+height: 216vh;
+border: 1px solid black;
+color: black;
+font: bold 16px arial, sans-serif;
+  
+border-radius: 10px;
+justify-content: space-around;
+align-items: center;
+
+margin-left:75%; 
+margin-top: 11%;
+position:absolute;
+
+`
 
 
 export default class App extends React.Component {
-
-
-
+ 
   state = {
+    
     produtos: [
       {
         id: 1,
-        name: "Nave Espacial",
+        name: "Astronauta",
         value: 50.00,
-        imageUrl: "https://picsum.photos/200/200",
+        imageUrl: astronauta ,
       },
       {
         id: 2,
-        name: "Foguete da Missão Apollo 11",
-
+        name: "Capsula Espacial",
         value: 1000.0,
-        imageUrl: "https://picsum.photos/200/200"
-
-
-
-
+        imageUrl: capsula,
       },
       {
         id: 3,
+        name: "Estação Espacial",
+        value: 250.00,
+        imageUrl: estacao,
+      },
+      {
+        id: 4,
+        name: "Foguete",
+        value: 19.00,
+        imageUrl: foguete,
+      },
+      {
+        id: 5,
+        name: "Kit Astronautas",
+        value: 560.00,
+        imageUrl: KitAstronautas,
+      },
+      {
+        id: 6,
+        name: "Kit Astronautas New",
+        value: 710.00,
+        imageUrl: KitAstro,
+      },
+      {
+        id: 7,
+        name: "Kit Espacial",
+        value: 800.00,
+        imageUrl: KitEspacial,
+      },
+      {
+        id: 8,
+        name: "Kit Exploradores",
+        value: 940.00,
+        imageUrl: KitExploradores,
+      },
+      {
+        id: 9,
         name: "Ônibus Espacial",
-        value: 200.00,
-        imageUrl: "https://picsum.photos/200/200",
-      }
+        value: 35.00,
+        imageUrl: OnibusEspacial,
+      },
+      {
+        id: 10,
+        name: "Ônibus Rover",
+        value: 190.00,
+        imageUrl: OnibusRover,
+      },
+      {
+        id: 11,
+        name: "Puzzle Espacial",
+        value: 60.00,
+        imageUrl: PuzzleEspacial,
+      },
+      {
+        id: 12,
+        name: "Rover Espacial",
+        value: 79.00,
+        imageUrl: RoverEspacial,
+      },
+      // {
+      //   id: 13,
+      //   name: "Space Deluxe",
+      //   value: 450.00,
+      //   imageUrl: SpaceDeluxe,
+      // },
+      
     ],
 
     lista: [],
@@ -56,9 +180,6 @@ export default class App extends React.Component {
   }
   produtoPorNome = (event) => {
     this.setState({ nomeProduto: event.target.value })
-
-
-  
 
   }
 
@@ -129,6 +250,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    
     const valoresFiltrados = this.state.produtos.filter((produto) => {
       if (produto.value >= this.state.filtroMin) {
         return true
@@ -177,8 +299,12 @@ export default class App extends React.Component {
       })} 
 
   return(
-      <div className = "App" >
-        <h1>Galaxy Kids </h1>
+    <Fundo>
+   
+      <Grid className = "App" >
+        <Titulo>Galaxy Kids </Titulo>
+
+       
         <Filtros
           valorMin={this.valorMin}
           filtroMin={this.state.filtroMin}
@@ -195,7 +321,7 @@ export default class App extends React.Component {
          cardProdutos={valoresFiltrados.map((produto)=>{
           return(
             <CardProdutos
-            imageUrl={produto.imageUrl}
+                imageUrl={produto.imageUrl}
                 name={produto.name}
                 value={produto.value}
                 adicionarAoCarrinho={() => {this.adicionarProduto(produto.id)}}
@@ -205,6 +331,7 @@ export default class App extends React.Component {
         
         
          />
+         <CarrinhoDiv>
         <Carrinho
           itemCarrinho={this.state.lista}
           listaCompras={this.state.lista.map((produto) => {
@@ -217,7 +344,16 @@ export default class App extends React.Component {
           })}
 
         />
-      </div>
+        </CarrinhoDiv>
+       
+       
+      </Grid>
+      </Fundo>
+      
+      
+      
     )
+   
   }
+  
 }
