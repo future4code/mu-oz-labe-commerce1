@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-
+import './App.css'
 import Filtros from './components/Filtros.js'
 import Produtos from './components/Produtos.js'
 import Carrinho from './components/Carrinho'
@@ -20,17 +20,20 @@ import OnibusRover from './imagens/onibus-rover.jpg'
 import PuzzleEspacial from './imagens/puzzle-espacial.jpg'
 import RoverEspacial from './imagens/rover-espacial2.jpg'
 //import SpaceDeluxe from './imagens/space-deluxe.jpg'
-import Galaxia from './imagens/galaxia.jpg'
+
 
 
 const Fundo = styled.body`
+  width:90vw;
+  height: 90vh; 
   
-  width: 1425px;
-  height: 1850px; 
-  background-size: cover;
-  background-image: url(${Galaxia});
-`;
-
+  @media(min-width: 320px) and (max-width:420px){
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`
 const Titulo = styled.h1`
   width: 400px;
   padding-top:10px;
@@ -39,17 +42,30 @@ const Titulo = styled.h1`
   font: bold 50px arial, sans-serif; 
   font-weight: 50px;
   border:black 50px;
-`;
 
+  @media(min-width: 320px) and (max-width:420px){
+    
+    font-size: 30px;
+    width: 100px;
+  }
+
+`
 const Grid = styled.div`
  display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-columns: auto;
 	justify-content: stretch;
   
+
+  @media(min-width: 320px) and (max-width:420px){
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
   
   `
-
 const CarrinhoDiv = styled.div`
 background-color: rgba(248, 248, 255, 0.8);
 display: grid;
@@ -65,14 +81,21 @@ height: 216vh;
 border: 1px solid black;
 color: black;
 font: bold 16px arial, sans-serif;
-  
 border-radius: 10px;
 justify-content: space-around;
-align-items: center;
-
 margin-left:75%; 
 margin-top: 11%;
 position:absolute;
+
+@media(min-width: 320px) and (max-width:420px){
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  position: relative;
+  margin-left: 0px;
+  width: 70vw;
+  
+}
 
 `
 
