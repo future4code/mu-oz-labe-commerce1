@@ -7,7 +7,7 @@ const Img = styled.img`
   margin-top: 10px;
   width: 200px;
   height: 200px;
-  `;
+  `
 
 const Descricao = styled.p`
     width: 150px;
@@ -15,7 +15,7 @@ const Descricao = styled.p`
     box-sizing: border-box;
     color: black;
     font: bold 16px arial, sans-serif; 
-  `;
+  `
 
 const Botao = styled.button`
 margin-bottom:10px;
@@ -32,6 +32,8 @@ color: white;
 const Card = styled.div`
     box-sizing: border-box;
     border-radius: 8px;
+    border: black solid 3px;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;

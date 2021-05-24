@@ -15,18 +15,26 @@ const Inputs = styled.input`
 
     width: 100px;
     height: 20px;
-   
+    @media(min-width: 320px) and (max-width:420px){
+       width: 40%auto;
+       
+    }
 
-    /* max-width: 100px;
-    margin-bottom:10px; */
-`;
+    
+`
 
 const InputNome = styled.input`
     display: flex;
     flex-direction: row;
 
-    width: 500px;
+    width: 50%;
     height: 20px;
+
+    @media(min-width: 320px) and (max-width:420px){
+        width: 50%;
+    }
+
+
   
   `
 
@@ -36,7 +44,9 @@ const Label = styled.label`
     color: white;
     font: 16px arial, sans-serif; 
     margin: 0 20px;
-  `;
+
+    
+  `
 
 const Div = styled.div`
     display: flex;
@@ -46,8 +56,15 @@ const Div = styled.div`
     margin-right: 40px;
     height: 20px;
     padding:10px;
+
     
-`;
+    @media(min-width: 320px) and (max-width:420px){
+        display: flex;
+        flex-direction: column;
+        margin-top: 80px;
+    }
+    
+`
 
 export default class Filtros extends React.Component {
     

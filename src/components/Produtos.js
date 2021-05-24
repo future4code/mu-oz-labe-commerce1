@@ -12,9 +12,15 @@ const Section = styled.section`
   margin-top: 40px;
   margin-left:30px;
   width: 70vw;
-  height: 220vh;
+  height: 100%;
+
+  @media(min-width: 320px) and (max-width:420px){
+      display: flex;
+      flex-direction: column;
+      margin-top: 90px;
+  }
   
-`;
+`
 
 export default class Produtos extends React.Component {
 
